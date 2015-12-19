@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<!--To automatically update the page contents-->
+<meta http-equiv="refresh" content="60">
+<html ng-app="twitterApp">
+<head>
+    <title>Salesforce Twitter Feed Reader</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="oauth.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <script src="services.js"></script>
+    <style>
+                body
+                {
+                     background-color: #e5eeff;
+                }
+
+                #firstheading
+                {
+                        background: url('assets/img/bg.jpg') no-repeat center center fixed;
+                        -webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+                        background-size: cover;
+                }
+                .container
+                 {
+                    margin-top: 10px;
+                    margin-bottom: 10px;
+                 }
+                #results .row
+                 {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                 }
+
+               .header img {
+                  float: left;
+                  width: 120px;
+                  height: 80px;
+                 }
+
+               .header h1 {
+                 position: relative;
+                 top: 12px;
+                 left: 10px;
+                 color: #1a8bff;
+                }
+
+             .header1 img {
+                  float: left;
+                  width: 500px;
+                  height: 200px;
+                 }
+    </style>
+</head>
+<body>
+    <div class="container" ng-controller="TwitterController">
+         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="row" id="firstheading">
+                <div class="col-md-8">
+                    <div class="header">
+                        <img src="assets/img/salesforceLogo.png" alt="logo" />
+                        <h1 style="color: white"><b>Twitter Feed Reader</b></h1>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <br /><br />
+                    <button ng-click="connectButton()" id="connectButton" type="button" class="btn btn-primary">Connect To Twitter</button>
+                    <button ng-click="signOut()" id="signOut" type="button" class="btn btn-primary" style="display:none;">Sign Out</button>
+                </div>
+             </div>
+          </nav>
+        <br /><br /> <br /> <br /><br />
+        <div class="row" ng-show="connectedTwitter">
+            <div class="col-xs-6">
+                <div class="header1">
+                    <img src="assets/img/salesforce_twitterPage.png" />
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <br />
+                <input type="text" ng-model="searchTerm" class="form-control" id="searchBox" placeholder="Enter search content here" />
+            </div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-xs-12" id="results">
+                <div class="row" ng-show="connectedTwitter">
+                    <div class="col-xs-2 col-sm-2">
+                        <h6><b>PROFILE IMAGE</b></h6>
+                    </div>
+                    <div class="col-xs-2 col-sm-6">
+                        <h6><b>USER NAME WITH TWEET CONTENT</b></h6>
+                    </div>
+                    <div class="col-xs-2 col-sm-2">
+                        <h6><b>USER SCREEN NAME</b></h6>
+                    </div>
+                    <div class="col-xs-2 col-sm-2">
+                        <h6><b>RETWEET COUNT</b></h6>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="t in tweets | filter:searchTerm">
+                    <div class="col-xs-2 col-sm-1">
+                        <img ng-src="{{t.user.profile_image_url}}" class="img-circle">
+                    </div>
+                    <div class="col-xs-2 col-sm-7">
+                        <small>{{t.user.name}}</small><br> <span ng-bind-html="t.text"></span>
+                    </div>
+                    <div class="col-xs-2 col-sm-2">
+                        <small>{{t.user.screen_name}}</small><br> 
+                    </div>
+                    <div class="col-xs-2 col-sm-2">
+                        <small>{{t.retweet_count}}</small><br> 
+                    </div>
+                </div>
+                <div ng-show="rateLimitError">
+                  Rate limit reached. You are making too many requests.
+                </div>				
+            </div>
+        </div>
+    </div>
+</body>
+</html>

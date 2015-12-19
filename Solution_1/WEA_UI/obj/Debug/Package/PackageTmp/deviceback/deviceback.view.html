@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>IOT DEVICE DETAILS</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            padding-top: 50px;
+            background: url('assets/img/cloud_bg.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />-->
+    <!--<link href="assets/css/portfolio-item.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.3/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="css/connectthedots.css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="js/d3utils.js"></script>
+    <script type="text/javascript" src="js/d3DataFlow.js"></script>
+    <script type="text/javascript" src="js/d3Chart.js"></script>
+    <script type="text/javascript" src="js/d3ChartControl.js"></script>
+    <script type="text/javascript" src="js/d3DataSourceSocket.js"></script>
+    <script type="text/javascript" src="js/d3CTDDataSourceSocket.js"></script>
+    <script type="text/javascript" src="js/d3CTDDataSourceFilter.js"></script>
+    <script type="text/javascript" src="js/d3CTD.js"></script>-->
+</head>
+
+<body>
+    <div class="center-block">
+        <div class="row" id="firstheading">
+            <div class="col-md-6">
+                <h1>   <b> CANON IOT </b>  </h1>
+            </div>
+            <div class="col-md-6 text-right">
+                <h3> <b> <span class="glyphicon glyphicon-log-in"> </span> {{ user.username }}</b> </h3>
+            </div>
+        </div>
+        <div class="row" id="secondheading">
+            <div class="col-md-6">
+                <h4>   <b> DEVICE: {{ reqstream1.name }} </b>  </h4>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="alert" id="thirdheading">
+                    streams: {{ reqstream1.streams }} &nbsp;&nbsp;
+                    triggers: {{ reqstream1.triggers }} &nbsp;&nbsp;
+                    location: {{ reqstream1.locations }} &nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+
+        <br /><br />
+        <!--<div class=" col-md-6 text-left" ng-controller="mainCtrl">-->
+        <!--<table class="table table-bordered table-striped text-left" style="background-color: white; color: black; border-color:#B1C8B1">-->
+        <table class="table table-bordered table-striped text-center" style="background-color: white; color: black; border-color:#B1C8B1">
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s1) ; switchscreen(reqstream.s1)"> {{reqstream1.s1}} </a> </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph1" ng-click="select(reqstream.s1) ; switchscreen(reqstream.s1)"> {{reqstream1.s1}} </a> </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s2) ; switchscreen(reqstream.s2)"> {{reqstream1.s2}} </a> </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph2" ng-click="select(reqstream.s2) ; switchscreen(reqstream.s2)"> {{reqstream1.s2}} </a> </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s3) ; switchscreen(reqstream.s3)">  {{reqstream1.s3}} </a>  </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph3" ng-click="select(reqstream.s3) ; switchscreen(reqstream.s3)">  {{reqstream1.s3}} </a>  </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s4) ; switchscreen(reqstream.s4)"> {{reqstream1.s4}} </a> </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph4" ng-click="select(reqstream.s4) ; switchscreen(reqstream.s4)"> {{reqstream1.s4}} </a> </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s5) ; switchscreen(reqstream.s5)"> {{reqstream1.s5}} </a>  </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph5" ng-click="select(reqstream.s5) ; switchscreen(reqstream.s5)"> {{reqstream1.s5}} </a>  </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s6) ; switchscreen(reqstream.s6)"> {{reqstream1.s6}} </a> </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph6" ng-click="select(reqstream.s6) ; switchscreen(reqstream.s6)"> {{reqstream1.s6}} </a> </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s7) ; switchscreen(reqstream.s7)"> {{reqstream1.s7}} </a> </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph7" ng-click="select(reqstream.s7) ; switchscreen(reqstream.s7)"> {{reqstream1.s7}} </a> </td>
+            </tr>
+            <tr>
+                <td> <a href="#/table8" ng-click="select(reqstream.s8) ; switchscreen(reqstream.s8)"> {{reqstream1.s8}} </a> </td>
+            </tr>
+            <tr>
+                <td> <a href="#/table9" ng-click="select(reqstream.s9); switchscreen(reqstream.s9)"> {{reqstream1.s9}} </a> </td>
+            </tr>
+            <!--<tr>
+                <td> <a href="#/devicedetails" ng-click="select(reqstream.s10); switchscreen(reqstream.s10)"> {{reqstream1.s10}} </a> </td>
+            </tr>-->
+            <tr>
+                <td> <a href="#/graph10" ng-click="select(reqstream.s10); switchscreen(reqstream.s10)"> {{reqstream1.s10}} </a> </td>
+            </tr>
+        </table>   
+
+        <div class="col-md-8">
+    <div class="panel panel-default">
+        <h2>Name: {{ reqstream1.name }} </h2>
+    </div>
+    </div>
+
+
+    </div>
+</body>
+</html>
+
+

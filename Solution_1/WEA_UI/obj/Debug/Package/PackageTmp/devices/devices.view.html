@@ -1,0 +1,121 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IOT DEVICE DETAILS</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <style>
+        body {
+            padding-top: 50px;
+            background: url('assets/img/cloud_bg.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+  </style>
+
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />-->
+    <link href="assets/css/portfolio-item.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.3/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="css/connectthedots.css" />
+
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <script type="text/javascript" src="js/d3utils.js"></script>
+    <script type="text/javascript" src="js/d3DataFlow.js"></script>
+    <script type="text/javascript" src="js/d3Chart.js"></script>
+    <script type="text/javascript" src="js/d3ChartControl.js"></script>
+    <script type="text/javascript" src="js/d3DataSourceSocket.js"></script>
+    <script type="text/javascript" src="js/d3CTDDataSourceSocket.js"></script>
+    <script type="text/javascript" src="js/d3CTDDataSourceFilter.js"></script>
+    <script type="text/javascript" src="js/d3CTD.js"></script>-->
+</head>
+
+<body>
+    <div class="row" id="firstheading">
+        <!--<div class="row" id="firstheading">-->
+        <div class="col-md-6">
+            <div class="header">
+                <img src="assets/img/canonlogo.jpg" alt="logo" />
+                <h1><b>IoT Portal</b></h1>
+            </div>
+            <!--<h1>   <b> CANON IOT </b>  </h1>-->
+        </div>
+        <div class="col-md-6 text-right">
+            <h3> <b> <span class="glyphicon glyphicon-log-in"> </span> {{ user.username }}</b> </h3>
+        </div>
+    </div>
+    <div class="row" id="secondheading">
+        <div class="col-md-6" ng-show="var">
+            <h4>   <b> DEVICES </b>  </h4>
+        </div>
+        <div class="col-md-6 text-right" ng-show="var">
+            <h5><input id="autoComplete" type="text" ng-model="searchDevice" placeholder="Search Devices"></h5>
+        </div>
+    </div>
+
+    <br />
+        <table class="table table-hover table-bordered text-center" style="background-color: #FAFAFA; color: black; border-color:#B1C8B1" ng-show="var">
+
+            <thead class="text-capitalize">
+                <tr>
+                    <td>
+                        <h4> <b> NAME </b> </h4>
+                    </td>
+                    <td>
+                        <h4> <b> VISIBILITY </b> </h4>
+                    </td>
+                    <td>
+                        <h4> <b> API KEY </b> </h4>
+                    </td>
+                </tr>
+            </thead>
+
+
+                <tbody>
+                    <tr ng-repeat="event in events| orderBy:sortType | filter:searchDevice">
+                        <td ng-click="select(event) ; selectdevice(event)">
+                                <a href="#/devicedetails" style="color: #585858">
+                                    {{ event.name }}
+                                </a>
+                        </td>
+                        <td>
+                            <span ng-show="event.visibility == 'private'" class="glyphicon glyphicon-eye-close"></span>
+                            <span ng-show="event.visibility == 'public'" class="glyphicon glyphicon-eye-open"></span>
+                            {{ event.visibility }}
+                        </td>
+                        <td>{{ event.apikey }}</td>
+                    </tr>
+                </tbody>
+       </table>
+
+    <!--<div ng-show="true">
+        <div id="chartsContainer1"></div>
+    </div>-->
+
+    <!--<div class="col-md-8">
+        <div class="panel panel-default">
+            <h2>Name: {{ selectedstream.name }} </h2>
+        </div>
+    </div>-->
+
+    <!--<div class="col-md-8">
+        <div class="panel panel-default">
+            <h2>Name: {{ selected.name }} </h2>
+        </div>
+    </div>-->
+
+    <!--<div id="chartsContainer1"></div>-->
+
+</body>
+</html>

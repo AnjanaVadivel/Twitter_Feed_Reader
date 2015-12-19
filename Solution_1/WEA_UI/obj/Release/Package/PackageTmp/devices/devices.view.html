@@ -1,0 +1,155 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IOT DEVICE DETAILS</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+    <style>
+        body {
+                         background-color: #F2F2F2;
+
+        }
+  </style>
+
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />-->
+    <link href="assets/css/portfolio-item.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.3/css/jquery.dataTables.css" />
+    <link rel="stylesheet" type="text/css" href="css/connectthedots.css" />
+
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <script type="text/javascript" src="js/d3utils.js"></script>
+    <script type="text/javascript" src="js/d3DataFlow.js"></script>
+    <script type="text/javascript" src="js/d3Chart.js"></script>
+    <script type="text/javascript" src="js/d3ChartControl.js"></script>
+    <script type="text/javascript" src="js/d3DataSourceSocket.js"></script>
+    <script type="text/javascript" src="js/d3CTDDataSourceSocket.js"></script>
+    <script type="text/javascript" src="js/d3CTDDataSourceFilter.js"></script>
+    <script type="text/javascript" src="js/d3CTD.js"></script>-->
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="row" id="firstheading">
+            <!--<div class="row" id="firstheading">-->
+            <div class="col-md-6">
+                <div class="header">
+                    <img src="/assets/img/Canon-new-logo-see-impossible.jpg" alt="logo" />
+                    <h1><b>IoT Portal</b></h1>
+                </div>
+                <!--<h1>   <b> CANON IOT </b>  </h1>-->
+            </div>
+            <!--<div class="col-md-6">
+                <div class="homeimg">
+                    <img src="/assets/img/home.png" alt="logo"  />
+                </div>
+            </div>-->
+            <div class="col-md-6 text-right" ng-hide="default">
+                <h3> <b> <span class="glyphicon glyphicon-home"> </span><span class="glyphicon glyphicon-log-in"> </span><a href="#/login" style="color: #585858"> {{ user.username }}</a></b> </h3>
+            </div>
+            <div class="col-md-6 text-right" ng-show="default">
+                <h3> <b><a href="#/" style="color: #585858"><span class="glyphicon glyphicon-home"> </span></a> &nbsp;&nbsp;&nbsp;&nbsp; <span class="glyphicon glyphicon-log-in"> </span> <a href="#/login" style="color: #585858">testuser@gmail.com </a></b> </h3>
+            </div>
+        </div>
+        <div class="row" id="secondheading">
+            <div class="col-md-6" ng-show="var">
+                <h4>   <b> DEVICES </b>  </h4>
+            </div>
+            <div class="col-md-6 text-right" ng-show="var">
+                <h5><input id="autoComplete" type="text" ng-model="searchDevice" placeholder="Search Devices"></h5>
+            </div>
+        </div>
+       </nav>
+        <br /> <br /> <br /> <br /><br /> <br />
+
+    <div class="random1">
+        <div class="col-md-2">
+            <br /><br />
+            <div class="random">
+                <img src="/assets/img/Arduino.png" />
+            </div>
+        </div>
+            <!--<div class="col-md-2">
+            <table class="table table-hovertable-bordered text-center" style="background-color: #FAFAFA; color: black; border-color:#B1C8B1" ng-show="var">
+
+                <thead class="text-capitalize">
+                    <tr>
+                        <td> Create Device </td>
+                    </tr>
+                </thead>
+            </table>
+        </div>-->
+            <div class="col-md-10 col-lg-push-3">
+            <table class="table table-hover table-bordered text-center" style="background-color: #FAFAFA; color: black; border-color:#B1C8B1" ng-show="var">
+                <thead class="text-capitalize">
+                    <tr>
+                        <td>
+                            <h4> <b> NAME </b> </h4>
+                        </td>
+                        <td>
+                            <h4> <b> VISIBILITY </b> </h4>
+                        </td>
+                        <td>
+                            <h4> <b> API KEY </b> </h4>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="event in events| orderBy:sortType | filter:searchDevice">
+                        <td ng-click="select(event) ; selectdevice(event)">
+                            <a href="#/devicedetails" style="color: #585858">
+                                {{ event.name }}
+                            </a>
+                        </td>
+                        <td>
+                            <span ng-show="event.visibility == 'private'" class="glyphicon glyphicon-eye-close"></span>
+                            <span ng-show="event.visibility == 'public'" class="glyphicon glyphicon-eye-open"></span>
+                            {{ event.visibility }}
+                        </td>
+                        <td>{{ event.apikey }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    
+    <div class="col-md-12">
+        <!--<a href="#/eventhub" class="btn btn-default">Event Hub Connection Information</a>-->
+        <button ng-click="togglescreen()" class="btn btn-default">Event Hub Connection Information</button>
+        <!--<a style="color: black" href=""><h5>(Configure Event Hub)</h5></a>-->
+        <!--<div class="col-md-8" ng-show="eh">-->
+        <br /><br />
+        <div class="panel panel-primary" ng-show="eh">
+            <h5><b>EVENT HUB NAME:</b> model</h5>
+            <h5>
+                <b>CONNECTION STRING:</b>
+                Endpoint=sb://cn-oip-ns.servicebus.windows.net/;SharedAccessKeyName=Receiver;SharedAccessKey=4fzsmkSu6RXFvN4Yp5e26o59+M9WYWJ7M++qkbpdQYM=
+            </h5>
+        </div>
+    </div>
+        <!--<div ng-show="true">
+            <div id="chartsContainer1"></div>
+        </div>-->
+        <!--<div class="col-md-8">
+            <div class="panel panel-default">
+                <h2>Name: {{ selectedstream.name }} </h2>
+            </div>
+        </div>-->
+        <!--<div class="col-md-8">
+            <div class="panel panel-default">
+                <h2>Name: {{ selected.name }} </h2>
+            </div>
+        </div>-->
+        <!--<div id="chartsContainer1"></div>-->
+
+</body>
+</html>

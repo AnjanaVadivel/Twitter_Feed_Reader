@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />         <!-- Important for d3.js to work ; should be included -->
+    <title>User Registration and Login</title>
+
+    <script src="//code.angularjs.org/1.2.20/angular.js"></script>    
+
+    <link href="assets/css/graph_D3.css" rel="stylesheet" />
+    <script src="app/graph_D3.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+</head>
+
+<body>
+    <div ng-app="chartApp" ng-controller="SalesController">
+        <h1>Today's Sales Chart</h1>
+        <div linear-chart chart-data="salesData"></div>
+    </div>
+</body>
+</html>
